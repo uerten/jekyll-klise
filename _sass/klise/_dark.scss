@@ -218,7 +218,12 @@ body[data-theme="dark"] {
       opacity: 1;
     }
   }
-
+  // SVG icons
+  .github_icon {
+    fill: #FF0000;
+  }
+  
+  
   // 404 Page
   .not-found {
     .title {
