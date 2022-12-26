@@ -10,11 +10,5 @@ Hey there! Welcome to my blog, I'm working in tech consultancy and mainly focuse
 
 On this page, you will find a collection of all the news, thoughts, and opinions that I have shared over the years. As someone who is deeply passionate about staying up-to-date on the latest trends and developments in the field, I am always looking for ways to share my insights and expertise with others
 
-Some buzzwords related to me:
+Some buzzwords related to me:  
 Industrial IoT, Industry 4.0, Data Analytics, Solutions Architecture, Business Analysis
-
-If you have a question about me or anything else, just ping me on any of the platforms below:
-
-- {{ site.author.email }}
-- github.com/{{ site.author.github }}
-- linkedin.com/in/{{ site.author.linkedin }}
