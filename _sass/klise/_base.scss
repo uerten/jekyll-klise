@@ -7,6 +7,10 @@
   transition: background-color 75ms ease-in, border-color 75ms ease-in;
 }
 
+.github_icon {
+  fill: #181717;
+}
+
 .notransition {
   -webkit-transition: none;
   -moz-transition: none; 
