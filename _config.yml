@@ -20,7 +20,7 @@ author:
   facebook: facebook_username # facebook username
   linkedin: ufukerten # linkedin username
   email: erten.ufuk@gmail.com # email adress
-  avatar:   # change with your own avatar
+  avatar: assets/img/avatar.png  # change with your own avatar
 
 # URL settings
 url: "https://www.ufukerten.com" #
