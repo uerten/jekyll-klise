@@ -17,4 +17,4 @@ If you have a question about me or anything else, just ping me on any of the pla
 
 - {{ site.author.email }}
 - github.com/{{ site.author.github }}
-- linkedin.com/{{ site.author.linkedin }}
+- linkedin.com/in/{{ site.author.linkedin }}
