@@ -1,18 +1,20 @@
 ---
-title: Colophon
+title: About
 permalink: /about/
 layout: page
-excerpt: Hello peeps, I'm student of computer science from Banyuwangi, living in Jogjakarta. This blog for documentation about my programming journey, running on jekyll, hosting on netlify and using my own simple theme.
+excerpt: This blog is for documentation about my thought journey.
 comments: false
 ---
 
-He's a student from Banyuwangi, living in Jogjakarta. the blog for documentation about his programming 🎒 journey, running on jekyll, hosting on [now.sh](http://now.sh) and using his own theme, he name it <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noopener">klisé</a>, he also loves to learning web technology; but he often forgot, that a reason why him doing the writing.
+Hey there! Welcome to my blog, I'm working in tech consultancy and mainly focused on manufacturing and supply chain domain. I have a strong interest in the intersection of technology and industry, and am particularly focused on identifying and developing practical use cases that can drive operational efficiency.
 
-If you have a question about him or else, just send a letter to him.
+On this page, you will find a collection of all the news, thoughts, and opinions that I have shared over the years. As someone who is deeply passionate about staying up-to-date on the latest trends and developments in the field, I am always looking for ways to share my insights and expertise with others
 
-You can [report](http://github.com/piharpi/jekyll-klise/issues/new) if there is an broken link(s) or somethings else.
+Some buzzwords related to me:
+Industrial IoT, Industry 4.0, Data Analytics, Solutions Architecture, Business Analysis
 
-**may u needs ✨**
+If you have a question about me or anything else, just ping me on any of the platforms below:
 
 - {{ site.author.email }}
 - github.com/{{ site.author.github }}
+- linkedin.com/{{ site.author.linkedin }}
