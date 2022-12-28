@@ -29,4 +29,5 @@ Another benefit of Data Mesh is that it promotes a culture of data-driven decisi
 
 Overall, Data Mesh is a powerful data management approach that can help organizations to overcome the challenges of traditional data management approaches and drive value from data more effectively. While it is still a relatively new concept, many enterprises have implemented it in their own ways, and it will be interesting to see where it goes in the future.
 
-There's also a book "Data Mesh" written by Zhamak Dehghani explaining whole concept in very detail. You can find in this [link](https://www.oreilly.com/library/view/data-mesh/9781492092384/)
+There's also a book "Data Mesh" written by Zhamak Dehghani explaining whole concept in very detail. You can find in this <a href="https://www.oreilly.com/library/view/data-mesh/9781492092384/" target="_blank">link</a>
+
