@@ -3,12 +3,12 @@ title: "Data Mesh: A New Approach to Data Management"
 date: 2022-12-28 11:58:47 +03:00
 tags: [Data Mesh, Data Management]
 description: Introductory article about data mesh concept
-image: "/data-mesh/datamesh.png"
+image: "/data-mesh-new-data-management-approach/datamesh.png"
 ---
 
 <figure>
-<img src="/data-mesh/datamesh.png" alt="Data Mesh Principals">
-<figcaption>Data Mesh Principals, <a href="https://www.datamesh-architecture.com/#why">source</a></figcaption>
+<img src="/data-mesh-new-data-management-approach/datamesh.png" alt="Data Mesh Principals">
+<figcaption>Data Mesh Principals, <a href="https://www.datamesh-architecture.com/#why" target="_blank">source</a></figcaption>
 </figure>
 
 In today's digital world, data is a critical asset for organizations. It is the fuel that drives business decisions, enables innovation, and helps organizations to better understand and serve their customers. As such, effective data management is essential for organizations to thrive. However, traditional approaches to data management often struggle to keep up with the fast-paced, constantly evolving nature of the modern business environment. This is where Data Mesh comes in.
