@@ -1,6 +1,6 @@
 ---
 title: "How to Read a Book"
-date: 2022-01-15 11:58:47 +03:00
+date: 2023-01-15 11:58:47 +03:00
 tags: [Book, General]
 description: How to read a book, book review
 ---
