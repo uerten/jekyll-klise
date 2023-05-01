@@ -9,7 +9,7 @@ Recently, a new version of SAFe was launched. Version 6.0 adds a number of signi
 
 Here are the six primary themes of SAFe 6.0 change:
 
-1. Strengthening the Foundation for Business Agility  
+1. Strengthening the Foundation for Business Agility
   
 It focuses on solidifying the framework for corporate agility. Updates to the Business Agility Value Stream (BAVS), SAFe Foundation, Lean-Agile Mindset, SAFe Core Values, and SAFe Principles are made to achieve this. To make it clearer how to navigate the shift, the SAFe Implementation Roadmap and the duties of SAFe Practice Consultants were also changed.
 
@@ -21,7 +21,7 @@ SAFe 6.0 is focused on improving the performance of agile teams by providing mor
 
 The Scrum Master/Team Coach now has broader responsibilities for optimizing flow, building high-performing teams, and supporting organizational agility. The Agile Release Train is responsible for delivering effective solutions to customers by developing solutions iteratively, engaging with customers, and adjusting their course of action. A 'responsibility wheel' has been created to clarify the ART's duties at-a-glance. Finally, the collaborative partnerships needed to enable quick and efficient product development flow have been updated in four role articles with content authority. These roles are integral to successful value delivery, but no one has all the domain knowledge or capacity to do it alone.
 
-3. Accelerating Value Flow  
+3. Accelerating Value Flow
  
 In the digital age, accelerating value flow is necessary for survival, and SAFe 6.0 introduces eight flow accelerators to help value flow faster. SAFe also incorporates flow into daily work with new articles on SAFe Scrum, SAFe Team Kanban, Built-in Quality, and Value Stream Management. These articles offer techniques for addressing and optimizing continuous value flow for different levels within the SAFe Framework.
 
