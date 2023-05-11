@@ -1,6 +1,6 @@
 ---
-title: "Hands-on: Build your own Industrial IoT Demo"
-date: 2022-12-28 11:58:47 +03:00
+title: "Hands-on: Build your own Industrial IoT Demo - Part 1"
+date: 2023-05-15 19:28:11 +03:00
 tags: [Industrial IoT, Open Source]
 description: How to build your own Industrial IoT solution
 image: ""
@@ -31,7 +31,7 @@ For secure and organized storage of the processed data, we will utilize Timescal
 
 To visualize and gain insights from the collected data, we will implement Grafana. Grafana will connect to TimescaleDB, enabling us to fetch the required data and generate visually appealing dashboards. These dashboards will provide valuable insights into the environmental impact on our manufacturing process, aiding in data-driven decision-making.
 
-### Unified Namespace
+### **Unified Namespace**
 
 It’s also worth mentioning that we will utilize the Unified Namespace, term coined by Walker Reynolds (4.0 Solutions), for our MQTT topic structure to ensure a standardized and organized approach to data management and retrieval in our Industrial IoT solution. Here are a few reasons why we opt for a unified namespace:
 
@@ -46,7 +46,7 @@ It’s also worth mentioning that we will utilize the Unified Namespace, term co
 <figcaption>Solution Architecture</figcaption>
 </figure>
 
-### Requirements
+### **Requirements**
 
 For the successful implementation of this demo, we will require specific hardware and software components. Here is a breakdown of the essential items:
 
@@ -105,4 +105,4 @@ To implement our IoT platform, we have chosen the Raspberry Pi 4. While it is fe
 2. Next, install Docker on the Raspberry Pi by following the instructions provided **[here](https://linuxhint.com/install_docker_raspberry_pi-2/)**.
 3. After installing Docker, proceed to install Docker Compose on the Raspberry Pi by following the steps outlined **[here](https://linuxhint.com/install-docker-compose-raspberry-pi/)**.
 
-Before proceeding with the software setup, let's take a short break. When you're ready, we can move on to part 2.
+Before proceeding with the software setup, let's take a short break. When you're ready, we can move on to **[part 2](https://www.ufukerten.com/handson-iiot-demo-part2/)**.
