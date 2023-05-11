@@ -1,7 +1,7 @@
 ---
 title: "Hands-on: Build your own Industrial IoT Demo - Part 2"
 date: 2023-05-18 22:16:31 +03:00
-tags: [Industrial IoT, Open Source]
+tags: [Industrial IoT, Digital Manufacturing, Open Source]
 description: How to build your own Industrial IoT solution
 image: ""
 ---
@@ -295,3 +295,13 @@ ORDER BY time ASC
 Congratulations! You have now built an industrial IoT demo using the Bosch XDK, Siemens IoT2040, Raspberry Pi 4, and a variety of open-source software tools.
 
 Since our demo was very small scale, we did not extensively consider the performance metrics of the chosen open-source solutions. Our primary focus was on selecting well-known and easy-to-implement components that allowed us to quickly kickstart our project.
+
+## Conclusion
+
+As an advocate of open-source software in the industrial environment, I strongly emphasize the importance of its increasing usage. The utilization of open-source solutions plays a crucial role in driving innovation, flexibility, and cost-effectiveness.
+
+Our exploration into building an Industrial IoT solution using open-source technologies has only scratched the surface. Moving forward, we will continue to examine our existing architecture and identify potential bottleneck areas. Our aim is to optimize the system by replacing certain components with more suitable alternatives. I encourage you to stay connected and follow my upcoming posts as we delve deeper into these topics.
+
+By embracing open-source solutions, industrial businesses can unlock new avenues of growth, enhance operational efficiency, and drive ongoing advancements in their respective industries. The power of open collaboration and the limitless possibilities offered by open-source technologies make it an indispensable choice for organizations seeking to thrive in today's competitive landscape.
+
+Thank you for joining me on this journey, and I look forward to sharing further insights and discoveries with you in the future.
