@@ -1,6 +1,6 @@
 ---
 title: "Hands-on: Build your own Industrial IoT Demo - Part 2"
-date: 2023-05-18 22:16:31 +03:00
+date: 2023-05-12 22:16:31 +03:00
 tags: [Industrial IoT, Digital Manufacturing, Open Source]
 description: How to build your own Industrial IoT solution
 ---
@@ -11,7 +11,7 @@ Let's continue where we left off, software configurations.
 
 ### **Mosquitto MQTT Broker on IoT2040**
 
-Mosquitto is read to use in IoT2040 image as we mentioned before. If you are facing any issue with Mosquitto, check /etc/mosquitto/mosquitto.conf file and make sure it’s configured as below:
+Mosquitto is ready to use in IoT2040 image as we mentioned before. If you are facing any issue with Mosquitto, check /etc/mosquitto/mosquitto.conf file and make sure it’s configured as below:
 
 ```yaml
 listener 1883
@@ -20,7 +20,7 @@ allow_anonymous true
 
 ### **Node-Red on IoT2040**
 
-Node-Red is also ready to use in IoT2040 image. We’ll start to build our own flow to collect XDK sensor data and several actions should be performed on ingested data before sending it to IoT platform so let’s do it step by step:
+Node-Red is also ready to use in IoT2040 image. We’ll start to build our own flow to collect XDK sensor data and several actions should be performed on ingested data before sending it to IoT Platform so let’s do it step by step:
 
 1. Node-Red instance is available at http://<iot2040_ip_address>:1880
 2. “MQTT In” node is needed to ingest XDK data. Add it to the flow and configure new MQTT broker as http://<iot2040_ip_address>:1883 and MQTT Topic as “raw/Acme/Milling/CNC_01/env_sensor”
@@ -28,7 +28,7 @@ Node-Red is also ready to use in IoT2040 image. We’ll start to build our own f
 <img src="/handson-iiot-demo-part2/msg_payload.png" alt="Example Payload">
 <figcaption>Example Payload</figcaption>
 </figure>
-3. When we check the incoming data, we’ll see raw temperature, humidity and pressure values in a one message. As a first step we need to split those messages and send them separately. In order to do that, add “Split” node. “Object split” will be used in our case since we want to send each key/pair in individual message. Click “Copy key to” box and set the field as “msg.sensor” so our keys will be saved under msg.sensor. 
+3. When we check the incoming data, we’ll see raw temperature, humidity and pressure values in one message. As a first step we need to split those messages and send them separately. In order to do that, add “Split” node. “Object split” will be used in our case since we want to send each key/pair in individual message. Click “Copy key to” box and set the field as “msg.sensor” so our keys will be saved under msg.sensor. 
 4. Now we split our messages but they are still going through same route. In order to differentiate the route of individual messages, we’ll use “Switch” node. Add Switch node to the flow and connect Split and Switch nodes. Set property field as “msg.sensor” and add three different route as below.
 <figure>
 <img src="/handson-iiot-demo-part2/msg_split.png" alt="Split Node Configuration">
@@ -145,7 +145,7 @@ networks:
   iotnetwork:
 ```
 
-2. Create conf file for mosquitto with “sudo nano mosquitto/mosquitto.conf” and add below configurations:
+2. Create folder for Mosquitto in iotdemo folder with "mkdir mosquitto", create conf file in this folder with “sudo nano mosquitto.conf” and add below configurations:
 
 ```yaml
 listener 1883
