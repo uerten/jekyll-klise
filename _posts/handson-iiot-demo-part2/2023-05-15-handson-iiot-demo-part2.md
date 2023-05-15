@@ -82,8 +82,7 @@ Final flow should look like this:
 
 We’ll use containerization to manage our different services in our IoT Platform.
 
-1. Create a folder for our project named “iotdemo” and put below docker-compose.yml file in it. Check your user id with “id -u” command if it’s different than “1000”, change user configuration in docker-compose file accordingly. Replace username and password fields as well.
-
+1. Create a folder for our project named “iotdemo” and put below docker-compose.yml file in it. Check your user id with “id -u” command if it’s different than “1000”, change user configuration in docker-compose file accordingly. Replace username and password fields as well.  
 	```yaml
 	version: '3.3'
 	services:
@@ -143,59 +142,51 @@ We’ll use containerization to manage our different services in our IoT Platfor
 	networks:
 	  iotnetwork:
 	```
-
-2. Create folder for Mosquitto in iotdemo folder with "mkdir mosquitto", create conf file in this folder with “sudo nano mosquitto.conf” and add below configurations:
-
+2. Create folder for Mosquitto in iotdemo folder with "mkdir mosquitto", create conf file in this folder with “sudo nano mosquitto.conf” and add below configurations:  
 	```yaml
 	listener 1883
 	allow_anonymous true
 	```
-
 3. run “docker-compose up -d” command in iotdemo directory to create docker containers for Node-Red, Mosquitto MQTT Broker, TimescaleDB and  Grafana. 
-4. In case of need, you can restart the containers with “docker-compose restart” or stop all containers with “docker-compose down” commands.
+4. In case of need, you can restart the containers with “docker-compose restart” or stop all containers with “docker-compose down” commands.  
 
 ### **Node-Red on Raspberry Pi**
 
-We’ll again use Node-Red as a business logic layer for our IoT Platform. We’ll only need one additional node outside of default palette to write data to our database. In order to install “node-red-contrib-postgresql”:
-
+We’ll again use Node-Red as a business logic layer for our IoT Platform. We’ll only need one additional node outside of default palette to write data to our database. In order to install “node-red-contrib-postgresql”:  
 1. Open the Node-Red editor by navigating to "http://<raspberry_pi_ip_address>:1880" in your web browser.
 2. Click menu icon on top right and then “Manage palette”
 3. Under “Install” tab, search for “node-red-contrib-postgresql” and click install.
 4. “postgresql” node should be visible in the right panel. 
 
-Now we can start to build our flow in our IoT Platform:
+Now we can start to build our flow in our IoT Platform:  
 
 1. Add “MQTT In” node to ingest data from Edge Gateway. Set server as "http://<raspberry_pi_ip_address>:1883" and Topic as “raw/#”.
+    > We’ll use generalized rules which can be applied for all raw data therefore we’ll be able to collect all raw data from single ingestion point.  
+2. In order to utilize postgresql node, we need to prepare the message accordingly. Below code first parse the MQTT topic to identify site, area, device and sensor information. Then it will extract timestamps and sensor values from the payload to create arrays. Finally create list of parameters to be used by query and create query.  
+	```jsx
+	// Split the MQTT topic string into separate components
+	var topicItems = msg.topic.split("/");
+	var site = topicItems[1];
+	var area = topicItems[2];
+	var device = topicItems[3];
+	var sensor = topicItems[4];
 
-> We’ll use generalized rules which can be applied for all raw data therefore we’ll be able to collect all raw data from single ingestion point.  
+	// Extract timestamps and values from payload
+	var values = [];
+	var times = [];
+	msg.payload.forEach(function (data) {
+		times.push(data.time);
+		values.push(data.measurement)
+	});
 
-2. In order to utilize postgresql node, we need to prepare the message accordingly. Below code first parse the MQTT topic to identify site, area, device and sensor information. Then it will extract timestamps and sensor values from the payload to create arrays. Finally create list of parameters to be used by query and create query. 
+	// Define parameters
+	msg.params = [times, site, area, device, sensor, values];
 
-```jsx
-// Split the MQTT topic string into separate components
-var topicItems = msg.topic.split("/");
-var site = topicItems[1];
-var area = topicItems[2];
-var device = topicItems[3];
-var sensor = topicItems[4];
+	// Generate query
+	msg.query = "INSERT INTO iotraw (time, site, area, device, sensor, measurement) SELECT unnest($1::timestamp[]), $2, $3, $4, $5, unnest($6::double precision[])";
 
-// Extract timestamps and values from payload
-var values = [];
-var times = [];
-msg.payload.forEach(function (data) {
-    times.push(data.time);
-    values.push(data.measurement)
-});
-
-// Define parameters
-msg.params = [times, site, area, device, sensor, values];
-
-// Generate query
-msg.query = "INSERT INTO iotraw (time, site, area, device, sensor, measurement) SELECT unnest($1::timestamp[]), $2, $3, $4, $5, unnest($6::double precision[])";
-
-return msg;
-```
-
+	return msg;
+	```
 3. Finally we can add “postgresql” node after function node and under Connection tab:
 Host: http://<raspberry_pi_ip_address>
 Port: 5432
@@ -205,7 +196,6 @@ and then under Security tab:
 User: postgres
 Password: your_password_here
 4. Don’t forget to deploy flow by clicking “Deploy” button on top-right corner.
-
 Final flow should look like this:
 <figure>
 <img src="/handson-iiot-demo-part2/iotplatform_flow.png" alt="Node-Red flow on IoT Platform">
@@ -216,77 +206,62 @@ Final flow should look like this:
 
 TimescaleDB is a time-series database that is optimized for storing and querying large volumes of time-series data. We’ve already created TimescaleDB instance with our docker-compose. Now we’ll create simple database and table in it:
 
-1. Connect TimescaleDB instance on Docker:
-
-```bash
-docker exec -it timescaledb psql -U postgres
-```
-
-2. Create a new database by running the following command:
-
-```sql
-CREATE DATABASE iotraw;
-```
-
-3. Connect to the new database by running the following command:
-
-```sql
-\c iotraw;
-```
-
-4. Create a regular PostgreSQL table to store the sensor data by running the following command:
-
-```sql
-CREATE TABLE iotraw (
-  time TIMESTAMPTZ NOT NULL,
-  site TEXT NOT NULL,
-  area TEXT NOT NULL,
-  device TEXT NOT NULL,
-  sensor TEXT NOT NULL,
-  measurement DOUBLE PRECISION NULL
-);
-```
-
-5. Convert the regular table into a hypertable partitioned on the “time” column using the create_hypertable() function provided by Timescale:
-
-```sql
-SELECT create_hypertable('iotraw', 'time');
-```
-
-6. Exit the PostgreSQL server by running the following command:
-
-```sql
-\q
-```
-
+1. Connect TimescaleDB instance on Docker:  
+	```bash
+	docker exec -it timescaledb psql -U postgres
+	```
+2. Create a new database by running the following command:  
+	```sql
+	CREATE DATABASE iotraw;
+	```
+3. Connect to the new database by running the following command:  
+	```sql
+	\c iotraw;
+	```
+4. Create a regular PostgreSQL table to store the sensor data by running the following command:  
+	```sql
+	CREATE TABLE iotraw (
+	  time TIMESTAMPTZ NOT NULL,
+	  site TEXT NOT NULL,
+	  area TEXT NOT NULL,
+	  device TEXT NOT NULL,
+	  sensor TEXT NOT NULL,
+	  measurement DOUBLE PRECISION NULL
+	);
+	```
+5. Convert the regular table into a hypertable partitioned on the “time” column using the create_hypertable() function provided by Timescale:  
+	```sql
+	SELECT create_hypertable('iotraw', 'time');
+	```
+6. Exit the PostgreSQL server by running the following command:  
+	```sql
+	\q
+	```
 ### **Grafana on Raspberry Pi**
 
-Grafana is a popular open-source tool for creating dashboards and visualizations for time-series data. To install and configure Grafana on the Raspberry Pi, follow these steps:
-
+Grafana is a popular open-source tool for creating dashboards and visualizations for time-series data. To install and configure Grafana on the Raspberry Pi, follow these steps:  
 1. Navigate to "http://<raspberry_pi_ip_address>:3000" in your web browser to access the Grafana interface.
 2. Log in to Grafana using the username and password you configured in docker-compose.yml file
 3. Click on “Menu” icon and then under “Connetions”, click “Connect data”. Search for “PostgreSQL” and click on icon. Finally click “Create a PostgreSQL data source” button.
-4. Configure the PostgreSQL data source by entering the following information:
-- Name: iotdemo
-- Host: http://<raspberry_pi_ip_address>:5432
-- Database: iotdemo
-- User: postgres
-- Password: your_password_here
-- TLS/SSL Mode: disable
+4. Configure the PostgreSQL data source by entering the following information:  
+	- Name: iotdemo
+	- Host: http://<raspberry_pi_ip_address>:5432
+	- Database: iotdemo
+	- User: postgres
+	- Password: your_password_here
+	- TLS/SSL Mode: disable
 5. Click on the "Save & Test" button to test the connection to the TimescaleDB database.
 6. Create a new dashboard by clicking on the "+" icon in the top-right corner of the screen and selecting "New dashboard". Click again “+ Add visualization” button.
-7. Configure the graph by selecting the "iotdemo" data source, selecting the "iotraw" table, and configuring the query to retrieve the desired data. Query section has “builder” and “code” option. Choose “code” and paste below query to the editor.
-
-```sql
-SELECT time_bucket_gapfill('1 minute', "time")  AS "time", AVG(measurement) AS "value", sensor 
-FROM iotraw 
-WHERE time >= $__timeFrom()::timestamptz AND time < $__timeTo()::timestamptz
-GROUP BY time_bucket_gapfill('1 minute', "time"), sensor 
-ORDER BY time ASC
-```
-
+7. Configure the graph by selecting the "iotdemo" data source, selecting the "iotraw" table, and configuring the query to retrieve the desired data. Query section has “builder” and “code” option. Choose “code” and paste below query to the editor.  
+	```sql
+	SELECT time_bucket_gapfill('1 minute', "time")  AS "time", AVG(measurement) AS "value", sensor 
+	FROM iotraw 
+	WHERE time >= $__timeFrom()::timestamptz AND time < $__timeTo()::timestamptz
+	GROUP BY time_bucket_gapfill('1 minute', "time"), sensor 
+	ORDER BY time ASC
+	```
 8. Save the dashboard by clicking on the "Save" button in the top-right corner of the screen.
-9. Now we should see the dashbard panel as below:
+9. Now we should see the dashbard panel as below:  
 <figure>
 <img src="/handson-iiot-demo-part2/grafana_dashboard.png" alt="Grafana Dashboard">
 <figcaption>Grafana Dashboard</figcaption>
