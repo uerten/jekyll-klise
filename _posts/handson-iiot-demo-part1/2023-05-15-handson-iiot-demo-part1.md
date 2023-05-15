@@ -9,7 +9,7 @@ image: ""
 
 Even though there are various Industrial IoT solutions on the market, developing your own solution from scratch can offer significant advantages in terms of flexibility, control, and cost-effectiveness. Also, it provides a deeper understanding of the complete architecture of Industrial IoT systems and their specific requirements. In this article, we will dive into the practical aspects and explore the process of creating our own Industrial IoT demo, covering every layer from the field level up to the visualization layer. By following this guide, you will gain valuable insights into both the hardware and software setup, enabling you to build a customized stack using open-source solutions. Let's embark on this hands-on journey to unleash the true potential of Industrial IoT.
 
-## Use Case
+## **Use Case**
 
 In this demonstration, we will focus on a specific use case as an assumption: visualizing environmental data from an equipment in our factory. The primary goal is to monitor and analyze the impact of the environment on our manufacturing process. To accomplish this, we will deploy a smart sensor that will collect real-time environmental data directly from the equipment. This data will then be transmitted to our IoT Platform through an edge gateway. 
 
