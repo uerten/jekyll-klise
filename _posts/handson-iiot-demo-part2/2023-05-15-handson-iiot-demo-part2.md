@@ -24,50 +24,50 @@ Node-Red is also ready to use in IoT2040 image. We’ll start to build our own f
 
 1. Node-Red instance is available at http://<iot2040_ip_address>:1880
 2. “MQTT In” node is needed to ingest XDK data. Add it to the flow and configure new MQTT broker as http://<iot2040_ip_address>:1883 and MQTT Topic as “raw/Acme/Milling/CNC_01/env_sensor”
-<figure>
-<img src="/handson-iiot-demo-part2/msg_payload.png" alt="Example Payload">
-<figcaption>Example Payload</figcaption>
-</figure>
+    <figure>
+    <img src="/handson-iiot-demo-part2/msg_payload.png" alt="Example Payload">
+    <figcaption>Example Payload</figcaption>
+    </figure>
 3. When we check the incoming data, we’ll see raw temperature, humidity and pressure values in one message. As a first step we need to split those messages and send them separately. In order to do that, add “Split” node. “Object split” will be used in our case since we want to send each key/pair in individual message. Click “Copy key to” box and set the field as “msg.sensor” so our keys will be saved under msg.sensor. 
 4. Now we split our messages but they are still going through same route. In order to differentiate the route of individual messages, we’ll use “Switch” node. Add Switch node to the flow and connect Split and Switch nodes. Set property field as “msg.sensor” and add three different route as below.
-<figure>
-<img src="/handson-iiot-demo-part2/msg_split.png" alt="Split Node Configuration">
-<figcaption>Split Node Configuration</figcaption>
-</figure>
+    <figure>
+    <img src="/handson-iiot-demo-part2/msg_split.png" alt="Split Node Configuration">
+    <figcaption>Split Node Configuration</figcaption>
+    </figure>
 5. Before starting pre-processing, we want to eliminate unnecessary load for IoT Platform so we only want to send the sensor value if it’s changed, it’s called report by exception. We have “rbe” node exactly for this job so we’ll add it into our flow and set the property as “msg.payload”. This node will check if new value is different from previous one and if yes, it’ll send it to next node. If not, message will be discarded
 6. Now we have separate messages in their own route so we can start to pre-process the messages. Here’s our list of task to perform: 1) Add timestamp for each message, 2) Reduce temperature decimal precision to 1, 3) Convert pressure unit to Pa to kPa and reduce decimal precision to 2. We’ll add three different “function” node to perform these tasks and add related codes to the individual nodes as below:
 
-```jsx
-// Temperature
-msg.payload = {
-    "time": new Date(),
-    "measurement": parseFloat(msg.payload.toFixed(1)),
-}
-return msg;
-```
-
-```jsx
-// Humidity
-msg.payload = {
-    "time": new Date(),
-    "measurement": msg.payload,
-}
-return ms
-```
-
-```jsx
-// Pressure
-msg.payload = {
-    "time": new Date(),
-    "measurement": parseFloat((msg.payload/1000).toFixed(2)),
-}
-return msg;
-```
+    ```jsx
+    // Temperature
+    msg.payload = {
+        "time": new Date(),
+        "measurement": parseFloat(msg.payload.toFixed(1)),
+    }
+    return msg;
+    ```
+    
+    ```jsx
+    // Humidity
+    msg.payload = {
+        "time": new Date(),
+        "measurement": msg.payload,
+    }
+    return ms
+    ```
+    
+    ```jsx
+    // Pressure
+    msg.payload = {
+        "time": new Date(),
+        "measurement": parseFloat((msg.payload/1000).toFixed(2)),
+    }
+    return msg;
+    ```
 7. As a last step, we want to combine multiple messages in one message before sending them to IoT platform in order to reduce message traffic. In our case XDK sends data every second but we’ll wait for 10 seconds and combine all the messages in one message and then release it. Add “Join” node into our flow and use below configuration:
-<figure>
-<img src="/handson-iiot-demo-part2/msg_join.png" alt="Join Node Configuration">
-<figcaption>Join Node Configuration</figcaption>
-</figure>
+    <figure>
+    <img src="/handson-iiot-demo-part2/msg_join.png" alt="Join Node Configuration">
+    <figcaption>Join Node Configuration</figcaption>
+    </figure>
 8. Finally our message is ready to be sent via MQTT. Add “MQTT out” node and configure 
 Server: “http://<raspberrypi_ip_address>:1883”
 Topic: “raw/Acme/Milling/CNC_01/env_temperature”
