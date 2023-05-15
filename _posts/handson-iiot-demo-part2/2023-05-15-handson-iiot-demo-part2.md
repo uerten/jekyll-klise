@@ -35,8 +35,7 @@ Node-Red is also ready to use in IoT2040 image. We’ll start to build our own f
     <figcaption>Split Node Configuration</figcaption>
     </figure>
 5. Before starting pre-processing, we want to eliminate unnecessary load for IoT Platform so we only want to send the sensor value if it’s changed, it’s called report by exception. We have “rbe” node exactly for this job so we’ll add it into our flow and set the property as “msg.payload”. This node will check if new value is different from previous one and if yes, it’ll send it to next node. If not, message will be discarded.
-6. Now we have separate messages in their own route so we can start to pre-process the messages. Here’s our list of task to perform: 1) Add timestamp for each message, 2) Reduce temperature decimal precision to 1, 3) Convert pressure unit to Pa to kPa and reduce decimal precision to 2. We’ll add three different “function” node to perform these tasks and add related codes to the individual nodes as below:
-
+6. Now we have separate messages in their own route so we can start to pre-process the messages. Here’s our list of task to perform: 1) Add timestamp for each message, 2) Reduce temperature decimal precision to 1, 3) Convert pressure unit to Pa to kPa and reduce decimal precision to 2. We’ll add three different “function” node to perform these tasks and add related codes to the individual nodes as below:  
     ```jsx
     // Temperature
     msg.payload = {
@@ -168,8 +167,8 @@ Now we can start to build our flow in our IoT Platform:
 
 1. Add “MQTT In” node to ingest data from Edge Gateway. Set server as "http://<raspberry_pi_ip_address>:1883" and Topic as “raw/#”.
 
-> We’ll use generalized rules which can be applied for all raw data therefore we’ll be able to collect all raw data from single ingestion point.
-> 
+> We’ll use generalized rules which can be applied for all raw data therefore we’ll be able to collect all raw data from single ingestion point.  
+
 2. In order to utilize postgresql node, we need to prepare the message accordingly. Below code first parse the MQTT topic to identify site, area, device and sensor information. Then it will extract timestamps and sensor values from the payload to create arrays. Finally create list of parameters to be used by query and create query. 
 
 ```jsx
