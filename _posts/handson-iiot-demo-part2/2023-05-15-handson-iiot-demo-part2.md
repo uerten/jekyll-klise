@@ -34,7 +34,7 @@ Node-Red is also ready to use in IoT2040 image. We’ll start to build our own f
     <img src="/handson-iiot-demo-part2/msg_split.png" alt="Split Node Configuration">
     <figcaption>Split Node Configuration</figcaption>
     </figure>
-5. Before starting pre-processing, we want to eliminate unnecessary load for IoT Platform so we only want to send the sensor value if it’s changed, it’s called report by exception. We have “rbe” node exactly for this job so we’ll add it into our flow and set the property as “msg.payload”. This node will check if new value is different from previous one and if yes, it’ll send it to next node. If not, message will be discarded
+5. Before starting pre-processing, we want to eliminate unnecessary load for IoT Platform so we only want to send the sensor value if it’s changed, it’s called report by exception. We have “rbe” node exactly for this job so we’ll add it into our flow and set the property as “msg.payload”. This node will check if new value is different from previous one and if yes, it’ll send it to next node. If not, message will be discarded.
 6. Now we have separate messages in their own route so we can start to pre-process the messages. Here’s our list of task to perform: 1) Add timestamp for each message, 2) Reduce temperature decimal precision to 1, 3) Convert pressure unit to Pa to kPa and reduce decimal precision to 2. We’ll add three different “function” node to perform these tasks and add related codes to the individual nodes as below:
 
     ```jsx
@@ -85,72 +85,72 @@ We’ll use containerization to manage our different services in our IoT Platfor
 
 1. Create a folder for our project named “iotdemo” and put below docker-compose.yml file in it. Check your user id with “id -u” command if it’s different than “1000”, change user configuration in docker-compose file accordingly. Replace username and password fields as well.
 
-```yaml
-version: '3.3'
-services:
-  grafana:
-    image: grafana/grafana:latest
-    user: "1000"
-    container_name: grafana
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    environment:
-      - GF_SECURITY_ADMIN_USER=<your_username_here>
-      - GF_SECURITY_ADMIN_PASSWORD=<your_password_here>
-    volumes:
-      - ./grafana/data:/var/lib/grafana
-    networks:
-      - iotnetwork
+	```yaml
+	version: '3.3'
+	services:
+	  grafana:
+		image: grafana/grafana:latest
+		user: "1000"
+		container_name: grafana
+		restart: unless-stopped
+		ports:
+		  - "3000:3000"
+		environment:
+		  - GF_SECURITY_ADMIN_USER=<your_username_here>
+		  - GF_SECURITY_ADMIN_PASSWORD=<your_password_here>
+		volumes:
+		  - ./grafana/data:/var/lib/grafana
+		networks:
+		  - iotnetwork
 
-  nodered:
-    image: nodered/node-red:latest
-    user: "1000"
-    container_name: nodered
-    restart: unless-stopped
-    ports:
-      - "1880:1880"
-    volumes:
-      - ./node-red/data:/data
-    networks:
-      - iotnetwork
+	  nodered:
+		image: nodered/node-red:latest
+		user: "1000"
+		container_name: nodered
+		restart: unless-stopped
+		ports:
+		  - "1880:1880"
+		volumes:
+		  - ./node-red/data:/data
+		networks:
+		  - iotnetwork
 
-  timescaledb:
-    image: timescale/timescaledb:latest-pg13
-    user: "1000"
-    container_name: timescaledb
-    restart: unless-stopped
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_PASSWORD=<your_password_here>
-    volumes:
-      - ./timescaledb/data:/var/lib/postgresql/data
-    networks:
-      - iotnetwork
+	  timescaledb:
+		image: timescale/timescaledb:latest-pg13
+		user: "1000"
+		container_name: timescaledb
+		restart: unless-stopped
+		ports:
+		  - 5432:5432
+		environment:
+		  - POSTGRES_PASSWORD=<your_password_here>
+		volumes:
+		  - ./timescaledb/data:/var/lib/postgresql/data
+		networks:
+		  - iotnetwork
 
-  mosquitto:
-    image: eclipse-mosquitto
-    container_name: mosquitto
-    user: "1000"
-    restart: unless-stopped
-    ports:
-      - "1883:1883"
-    volumes:
-      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-    networks:
-      - iotnetwork
+	  mosquitto:
+		image: eclipse-mosquitto
+		container_name: mosquitto
+		user: "1000"
+		restart: unless-stopped
+		ports:
+		  - "1883:1883"
+		volumes:
+		  - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+		networks:
+		  - iotnetwork
 
-networks:
-  iotnetwork:
-```
+	networks:
+	  iotnetwork:
+	```
 
 2. Create folder for Mosquitto in iotdemo folder with "mkdir mosquitto", create conf file in this folder with “sudo nano mosquitto.conf” and add below configurations:
 
-```yaml
-listener 1883
-allow_anonymous true
-```
+	```yaml
+	listener 1883
+	allow_anonymous true
+	```
 
 3. run “docker-compose up -d” command in iotdemo directory to create docker containers for Node-Red, Mosquitto MQTT Broker, TimescaleDB and  Grafana. 
 4. In case of need, you can restart the containers with “docker-compose restart” or stop all containers with “docker-compose down” commands.
