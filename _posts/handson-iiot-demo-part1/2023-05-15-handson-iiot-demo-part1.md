@@ -3,7 +3,6 @@ title: "Hands-on: Build your own Industrial IoT Demo - Part 1"
 date: 2023-05-15 19:28:11 +03:00
 tags: [Industrial IoT, Digital Manufacturing, Open Source]
 description: How to build your own Industrial IoT solution
-image: ""
 ---
 
 
