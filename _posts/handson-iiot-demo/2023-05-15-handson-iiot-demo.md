@@ -1,5 +1,5 @@
 ---
-title: "Hands-on: Build your own Industrial IoT Demo - Part 1"
+title: "Hands-on: Build your own Industrial IoT Demo"
 date: 2023-05-15 19:28:11 +03:00
 tags: [Industrial IoT, Digital Manufacturing, Open Source]
 description: How to build your own Industrial IoT solution
@@ -41,7 +41,7 @@ It’s also worth mentioning that we will utilize the Unified Namespace, term co
 5. **Ease of Maintenance:** With a standardized namespace, managing and maintaining the data becomes more streamlined. It simplifies tasks such as data organization, data migration, and system updates, as all components follow a consistent naming convention.
 
 <figure>
-<img src="/handson-iiot-demo-part1/sol_arch.png" alt="Solution Architecture">
+<img src="/handson-iiot-demo/sol_arch.png" alt="Solution Architecture">
 <figcaption>Solution Architecture</figcaption>
 </figure>
 
@@ -67,7 +67,7 @@ For the successful implementation of this demo, we will require specific hardwar
 
 ### **Siemens IoT2040 as an Edge Gateway**
 <figure>
-<img src="/handson-iiot-demo-part1/iot2040.jpg" alt="Siemens IoT2040 Edge Gateway">
+<img src="/handson-iiot-demo/iot2040.jpg" alt="Siemens IoT2040 Edge Gateway">
 <figcaption>Siemens IoT2040 Edge Gateway</figcaption>
 </figure>
 Siemens IoT2040 is an industrial-grade edge gateway that can be used to collect sensor data from field and send it to the cloud. Apart from IoT2040 device, you can use any Linux based edge device to implement our solution. The following steps are needed to configure the IoT2040:
@@ -78,7 +78,7 @@ Siemens IoT2040 is an industrial-grade edge gateway that can be used to collect 
 
 ### **Bosch XDK as a Field Sensor**
 <figure>
-<img src="/handson-iiot-demo-part1/bosch_xdk.jpg" alt="Bosch XDK Programmable Smart Sensor">
+<img src="/handson-iiot-demo/bosch_xdk.jpg" alt="Bosch XDK Programmable Smart Sensor">
 <figcaption>Bosch XDK Programmable Smart Sensor</figcaption>
 </figure>
 Bosch XDK is a programmable IoT sensor that is equipped with a full range of MEMS (micro-electromechanical system) sensors such as Accelerometer, Magnetometer, Gyroscope, Humidity/Temperature/Pressure Sensor, Acoustic Noise Sensor, Digital Light Sensor. XDK has its own workbench to program it in C or in more high level language [Eclipse Mita](https://www.eclipse.org/mita/platforms/xdk110/)
@@ -93,16 +93,14 @@ The following steps are needed to configure the XDK sensor:
 
 ### **Raspberry Pi 4 as an IoT Platform**
 <figure>
-<img src="/handson-iiot-demo-part1/raspberrypi4.jpg" alt="Raspbbery Pi 4">
+<img src="/handson-iiot-demo/raspberrypi4.jpg" alt="Raspbbery Pi 4">
 <figcaption>Raspbbery Pi 4</figcaption>
 </figure>
 To implement our IoT platform, we have chosen the Raspberry Pi 4. While it is feasible to implement our software components on any Linux devices or servers, we specifically opted for the Raspberry Pi to highlight the possibility of utilizing modest, compact devices. Follow these step-by-step instructions for the hardware setup:
 
 1. Install the Raspbian operating system on the Raspberry Pi. You can use the **[Raspberry Pi Imager](https://www.raspberrypi.com/software/)** tool to conveniently download and burn the relevant Raspbian image onto an SD card.
 2. Next, install Docker on the Raspberry Pi by following the instructions provided **[here](https://linuxhint.com/install_docker_raspberry_pi-2/)**.
-3. After installing Docker, proceed to install Docker Compose on the Raspberry Pi by following the steps outlined **[here](https://linuxhint.com/install-docker-compose-raspberry-pi/)**.
-
-Before proceeding with the software setup, let's take a short break. When you're ready, we can move on to **[part 2](https://www.ufukerten.com/handson-iiot-demo-part2/)**.
+3. After installing Docker, proceed to install Docker Compose on the Raspberry Pi by following the steps outlined **[here](https://linuxhint.com/install-docker-compose-raspberry-pi/)**.  
 
 ## **Software Setup**
 
@@ -122,13 +120,13 @@ Node-Red is also ready to use in IoT2040 image. We’ll start to build our own f
 1. Node-Red instance is available at http://<iot2040_ip_address>:1880
 2. “MQTT In” node is needed to ingest XDK data. Add it to the flow and configure new MQTT broker as http://"iot2040_ip_address":1883 and MQTT Topic as “raw/Acme/Milling/CNC_01/env_sensor”
     <figure>
-    <img src="/handson-iiot-demo-part1/msg_payload.png" alt="Example Payload">
+    <img src="/handson-iiot-demo/msg_payload.png" alt="Example Payload">
     <figcaption>Example Payload</figcaption>
     </figure>
 3. When we check the incoming data, we’ll see raw temperature, humidity and pressure values in one message. As a first step we need to split those messages and send them separately. In order to do that, add “Split” node. “Object split” will be used in our case since we want to send each key/pair in individual message. Click “Copy key to” box and set the field as “msg.sensor” so our keys will be saved under msg.sensor. 
 4. Now we split our messages but they are still going through same route. In order to differentiate the route of individual messages, we’ll use “Switch” node. Add Switch node to the flow and connect Split and Switch nodes. Set property field as “msg.sensor” and add three different route as below.
     <figure>
-    <img src="/handson-iiot-demo-part1/msg_split.png" alt="Split Node Configuration">
+    <img src="/handson-iiot-demo/msg_split.png" alt="Split Node Configuration">
     <figcaption>Split Node Configuration</figcaption>
     </figure>
 5. Before starting pre-processing, we want to eliminate unnecessary load for IoT Platform so we only want to send the sensor value if it’s changed, it’s called report by exception. We have “rbe” node exactly for this job so we’ll add it into our flow and set the property as “msg.payload”. This node will check if new value is different from previous one and if yes, it’ll send it to next node. If not, message will be discarded.
@@ -161,7 +159,7 @@ Node-Red is also ready to use in IoT2040 image. We’ll start to build our own f
     ```
 7. As a last step, we want to combine multiple messages in one message before sending them to IoT platform in order to reduce message traffic. In our case XDK sends data every second but we’ll wait for 10 seconds and combine all the messages in one message and then release it. Add “Join” node into our flow and use below configuration:
     <figure>
-    <img src="/handson-iiot-demo-part1/msg_join.png" alt="Join Node Configuration">
+    <img src="/handson-iiot-demo/msg_join.png" alt="Join Node Configuration">
     <figcaption>Join Node Configuration</figcaption>
     </figure>
 8. Finally our message is ready to be sent via MQTT. Add “MQTT out” node and configure 
@@ -171,7 +169,7 @@ Topic: raw/Acme/Milling/CNC_01/env_temperature
 
 Final flow should look like this:
 <figure>
-<img src="/handson-iiot-demo-part1/edge_flow.png" alt="Node-Red Flow on Edge">
+<img src="/handson-iiot-demo/edge_flow.png" alt="Node-Red Flow on Edge">
 <figcaption>Node-Red Flow on Edge</figcaption>
 </figure>
 
@@ -295,7 +293,7 @@ Password: your_password_here
 4. Don’t forget to deploy flow by clicking “Deploy” button on top-right corner.
 Final flow should look like this:
 <figure>
-<img src="/handson-iiot-demo-part1/iotplatform_flow.png" alt="Node-Red flow on IoT Platform">
+<img src="/handson-iiot-demo/iotplatform_flow.png" alt="Node-Red flow on IoT Platform">
 <figcaption>Node-Red flow on IoT Platform</figcaption>
 </figure>
 
@@ -360,7 +358,7 @@ Grafana is a popular open-source tool for creating dashboards and visualizations
 8. Save the dashboard by clicking on the "Save" button in the top-right corner of the screen.
 9. Now we should see the dashbard panel as below:  
 <figure>
-<img src="/handson-iiot-demo-part1/grafana_dashboard.png" alt="Grafana Dashboard">
+<img src="/handson-iiot-demo/grafana_dashboard.png" alt="Grafana Dashboard">
 <figcaption>Grafana Dashboard</figcaption>
 </figure>
 Congratulations! You have now built an industrial IoT demo using the Bosch XDK, Siemens IoT2040, Raspberry Pi 4, and a variety of open-source software tools.
