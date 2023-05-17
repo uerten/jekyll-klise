@@ -87,7 +87,7 @@ The following steps are needed to configure the XDK sensor:
 
 1. Install the Bosch XDK Workbench software on your computer. You can download it from **[the official website](https://www.bosch-connectivity.com/products/cross-domain/cross-domain-developement-kit/downloads/)**
 2. Workbench has already example projects that you can utilize for your needs. This is my version to send environmental data over MQTT in **[Github](https://github.com/uerten/bosch-xdk-senddataovermqtt)**. Download and import the project to Workbench. You only need to update “source/AppController.h” file for WLAN, SNTP and MQTT configuration
-3. WLAN and SNTP configurations will depend on your specific setup, set them accordingly. The MQTT broker address should be set to http://<iot2040_ip_address>:1883, and the MQTT topic should be set as "raw/Acme/Milling/CNC_01/env_sensor".
+3. WLAN and SNTP configurations will depend on your specific setup, set them accordingly. The MQTT broker address should be set to http://"iot2040_ip_address":1883, and the MQTT topic should be set as "raw/Acme/Milling/CNC_01/env_sensor".
 4. Ensure that the XDK device is connected and visible in the Workbench. Once you have finished configuring the settings, click the "Flash" button located in the top left panel. This will build the project and then flash the program onto the XDK device.
 5. Once the flashing process is complete, your XDK device is ready to transmit environmental data to the MQTT broker specified in the configuration.
 
@@ -117,7 +117,7 @@ allow_anonymous true
 
 Node-Red is also ready to use in IoT2040 image. We’ll start to build our own flow to collect XDK sensor data and several actions should be performed on ingested data before sending it to IoT Platform so let’s do it step by step:
 
-1. Node-Red instance is available at http://<iot2040_ip_address>:1880
+1. Node-Red instance is available at http://"iot2040_ip_address":1880
 2. “MQTT In” node is needed to ingest XDK data. Add it to the flow and configure new MQTT broker as http://"iot2040_ip_address":1883 and MQTT Topic as “raw/Acme/Milling/CNC_01/env_sensor”
     <figure>
     <img src="/handson-iiot-demo/msg_payload.png" alt="Example Payload">
