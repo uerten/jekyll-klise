@@ -63,8 +63,6 @@ For the successful implementation of this demo, we will require specific hardwar
 - Database: TimescaleDB
 - Visualization: Grafana
 
-By ensuring that you have these hardware and software components ready, you will be fully prepared to follow along with the demo and experience a seamless implementation of your Industrial IoT solution.
-
 ## **Hardware Setup**
 
 ### **Siemens IoT2040 as an Edge Gateway**
