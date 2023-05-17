@@ -23,7 +23,7 @@ allow_anonymous true
 Node-Red is also ready to use in IoT2040 image. We’ll start to build our own flow to collect XDK sensor data and several actions should be performed on ingested data before sending it to IoT Platform so let’s do it step by step:
 
 1. Node-Red instance is available at http://<iot2040_ip_address>:1880
-2. “MQTT In” node is needed to ingest XDK data. Add it to the flow and configure new MQTT broker as http://<iot2040_ip_address>:1883 and MQTT Topic as “raw/Acme/Milling/CNC_01/env_sensor”
+2. “MQTT In” node is needed to ingest XDK data. Add it to the flow and configure new MQTT broker as http://"iot2040_ip_address":1883 and MQTT Topic as “raw/Acme/Milling/CNC_01/env_sensor”
     <figure>
     <img src="/handson-iiot-demo-part2/msg_payload.png" alt="Example Payload">
     <figcaption>Example Payload</figcaption>
@@ -68,8 +68,8 @@ Node-Red is also ready to use in IoT2040 image. We’ll start to build our own f
     <figcaption>Join Node Configuration</figcaption>
     </figure>
 8. Finally our message is ready to be sent via MQTT. Add “MQTT out” node and configure 
-Server: “http://<raspberrypi_ip_address>:1883”
-Topic: “raw/Acme/Milling/CNC_01/env_temperature”
+Server: http://"raspberrypi_ip_address":1883
+Topic: raw/Acme/Milling/CNC_01/env_temperature
 9. Don’t forget to deploy flow by clicking “Deploy” button on top-right corner.
 
 Final flow should look like this:
@@ -153,14 +153,14 @@ We’ll use containerization to manage our different services in our IoT Platfor
 ### **Node-Red on Raspberry Pi**
 
 We’ll again use Node-Red as a business logic layer for our IoT Platform. We’ll only need one additional node outside of default palette to write data to our database. In order to install “node-red-contrib-postgresql”:  
-1. Open the Node-Red editor by navigating to "http://<raspberry_pi_ip_address>:1880" in your web browser.
+1. Open the Node-Red editor by navigating to http://"raspberry_pi_ip_address":1880 in your web browser.
 2. Click menu icon on top right and then “Manage palette”
 3. Under “Install” tab, search for “node-red-contrib-postgresql” and click install.
 4. “postgresql” node should be visible in the right panel. 
 
 Now we can start to build our flow in our IoT Platform:  
 
-1. Add “MQTT In” node to ingest data from Edge Gateway. Set server as "http://<raspberry_pi_ip_address>:1883" and Topic as “raw/#”.
+1. Add “MQTT In” node to ingest data from Edge Gateway. Set server as http://"raspberry_pi_ip_address":1883 and Topic as “raw/#”.
     > We’ll use generalized rules which can be applied for all raw data therefore we’ll be able to collect all raw data from single ingestion point.  
 2. In order to utilize postgresql node, we need to prepare the message accordingly. Below code first parse the MQTT topic to identify site, area, device and sensor information. Then it will extract timestamps and sensor values from the payload to create arrays. Finally create list of parameters to be used by query and create query.  
 	```jsx
@@ -188,7 +188,7 @@ Now we can start to build our flow in our IoT Platform:
 	return msg;
 	```
 3. Finally we can add “postgresql” node after function node and under Connection tab:
-Host: http://<raspberry_pi_ip_address>
+Host: http://"raspberry_pi_ip_address"
 Port: 5432
 Database: iotraw
 SSL: false
@@ -240,12 +240,12 @@ TimescaleDB is a time-series database that is optimized for storing and querying
 ### **Grafana on Raspberry Pi**
 
 Grafana is a popular open-source tool for creating dashboards and visualizations for time-series data. To install and configure Grafana on the Raspberry Pi, follow these steps:  
-1. Navigate to "http://<raspberry_pi_ip_address>:3000" in your web browser to access the Grafana interface.
+1. Navigate to http://"raspberry_pi_ip_address":3000 in your web browser to access the Grafana interface.
 2. Log in to Grafana using the username and password you configured in docker-compose.yml file
 3. Click on “Menu” icon and then under “Connetions”, click “Connect data”. Search for “PostgreSQL” and click on icon. Finally click “Create a PostgreSQL data source” button.
 4. Configure the PostgreSQL data source by entering the following information:  
   - Name: iotdemo
-  - Host: http://<raspberry_pi_ip_address>:5432
+  - Host: http://"raspberry_pi_ip_address":5432
   - Database: iotdemo
   - User: postgres
   - Password: your_password_here
