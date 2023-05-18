@@ -2,7 +2,7 @@
 title: "Data Mesh: A New Approach to Data Management"
 date: 2022-12-28 11:58:47 +03:00
 tags: [Data Mesh, Data Management]
-description: Introductory article about data mesh concept
+description: "Discover the transformative power of Data Mesh in revolutionizing data management. #DataMesh #DataManagement #DigitalTransformation"
 image: "/data-mesh-new-data-management-approach/datamesh.png"
 ---
 
