@@ -6,15 +6,15 @@ description: How to build your own Industrial IoT solution
 ---
 
 
-Even though there are various Industrial IoT solutions on the market, developing your own solution from scratch can offer significant advantages in terms of flexibility, control, and cost-effectiveness. Also, it provides a deeper understanding of the complete architecture of Industrial IoT systems and their specific requirements. In this article, we will dive into the practical aspects and explore the process of creating our own Industrial IoT demo, covering every layer from the field level up to the visualization layer. By following this guide, you will gain valuable insights into both the hardware and software setup, enabling you to build a customized stack using open-source solutions. Let's embark on this hands-on journey to unleash the true potential of Industrial IoT.
+Even though there are various off-the-shelf Industrial IoT solutions on the market, developing your own solution from scratch can offer huge advantages in terms of flexibility, control, and cost-effectiveness. Also, it provides a deeper understanding of the complete architecture of Industrial IoT systems and their specific requirements. In this article, we will dive into the practical aspects and explore the process of creating our own Industrial IoT demo, covering every layer from the field level up to the visualization layer. I hope you will gain valuable insights into both the hardware and software setup, enabling you to build a customized stack using open-source solutions. Let’s embark on this hands-on journey to unleash the true potential of Industrial IoT.
 
 ## **Use Case**
 
-In this demonstration, we will focus on a specific use case as an assumption: visualizing environmental data from an equipment in our factory. The primary goal is to monitor and analyze the impact of the environment on our manufacturing process. To accomplish this, we will deploy a smart sensor that will collect real-time environmental data directly from the equipment. This data will then be transmitted to our IoT Platform through an edge gateway. 
+As an assumption for this demonstration, we will concentrate on one particular use case: visualizing environmental data from a piece of machinery in our factory. The main objective is to track and assess how the environmental condition is affecting our manufacturing process. We will deploy a smart sensor that will directly gather environmental data from the machinery in real-time to achieve this. An edge gateway will then be used to send this data to our IoT Platform.
 
 ## **Solution Architecture**
 
-In our Industrial IoT solution, we have designed the following solution architecture to efficiently collect, process, store, and visualize sensor data:
+In our solution, we have designed the following solution architecture to efficiently collect, process, store, and visualize sensor data:
 
 ### **Smart Sensor and Edge Gateway Setup**
 
@@ -367,8 +367,6 @@ Since our demo was very small scale, we did not extensively consider the perform
 
 ## Conclusion
 
-As an advocate of open-source software in the industrial environment, I strongly emphasize the importance of its increasing usage. The utilization of open-source solutions plays a crucial role in driving innovation, flexibility, and cost-effectiveness.
+As an avid supporter of open-source software in the industrial environment, I strongly emphasize the importance of its increasing usage. Utilizing these tools is a great way to foster creativity, adaptability, and cost-efficiency for digital manufacturing projects.
 
-Our exploration into building an Industrial IoT solution using open-source technologies has only scratched the surface. Moving forward, we will continue to examine our existing architecture and identify potential bottleneck areas. Our aim is to optimize the system by replacing certain components with more suitable alternatives. I encourage you to stay connected and follow my upcoming posts as we delve deeper into these topics.
-
-Thank you for joining me on this journey, and I look forward to sharing further insights and discoveries with you in the future.
+Our exploration into building an Industrial IoT solution using open-source technologies has only scratched the surface. Moving forward, we will continue to examine our existing architecture and identify potential bottleneck areas. Our aim is to optimize the system by replacing certain components with more suitable alternatives. As we go deeper into these subjects, stay tuned for my upcoming posts.
