@@ -3,9 +3,13 @@ title: "Hands-on: Build your own Industrial IoT Demo"
 date: 2023-05-15 19:28:11 +03:00
 tags: [Industrial IoT, Digital Manufacturing, Open Source]
 description: How to build your own Industrial IoT solution
+image: "/handson-iiot-demo/iiot_demo.jpg"
 ---
 
-
+<figure>
+<img src="/handson-iiot-demo/iiot_demo.jpg" alt="IIoT Demo Structure">
+<figcaption>IIoT Demo Structure</figcaption>
+</figure>
 Even though there are various off-the-shelf Industrial IoT solutions on the market, developing your own solution from scratch can offer huge advantages in terms of flexibility, control, and cost-effectiveness. Also, it provides a deeper understanding of the complete architecture of Industrial IoT systems and their specific requirements. In this article, we will dive into the practical aspects and explore the process of creating our own Industrial IoT demo, covering every layer from the field level up to the visualization layer. I hope you will gain valuable insights into both the hardware and software setup, enabling you to build a customized stack using open-source solutions. Let’s embark on this hands-on journey to unleash the true potential of Industrial IoT.
 
 ## **Use Case**
