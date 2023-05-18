@@ -11,7 +11,7 @@ image: "/data-mesh-new-data-management-approach/datamesh.png"
 <figcaption>Data Mesh Principals, <a href="https://www.datamesh-architecture.com/#what-is-data-mesh" target="_blank">source</a></figcaption>
 </figure>
 
-In today's digital world, data is a critical asset for organizations. It is the fuel that drives business decisions, enables innovation, and helps organizations to better understand and serve their customers. As such, effective data management is essential for organizations to thrive. However, traditional approaches to data management often struggle to keep up with the fast-paced, constantly evolving nature of the modern business environment. This is where Data Mesh comes in.
+Data is an essential asset for organizations, as has been said a thousand times. It is the fuel that drives business decisions, enables innovation, and helps organizations to better understand and serve their customers. As such, effective data management is essential for organizations to thrive. However, traditional approaches to data management often struggle to keep up with the fast-paced, constantly evolving nature of the modern business environment. This is where Data Mesh comes in.
 
 Data Mesh is a data management approach that was conceptualized by Zhamak Dehghani and aims to address the challenges of traditional data management approaches in the enterprise. At its core, Data Mesh is about creating a decentralized, agile data management system in organizations. It is based on four fundamental principles: domain ownership, data as a product, self-serve data infrastructure platform, and federated governance.
 
