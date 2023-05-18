@@ -369,4 +369,4 @@ Since our demo was very small scale, we did not extensively consider the perform
 
 As an avid supporter of open-source software in the industrial environment, I strongly emphasize the importance of its increasing usage. Utilizing these tools is a great way to foster creativity, adaptability, and cost-efficiency for digital manufacturing projects.
 
-Our exploration into building an Industrial IoT solution using open-source technologies has only scratched the surface. Moving forward, we will continue to examine our existing architecture and identify potential bottleneck areas. Our aim is to optimize the system by replacing certain components with more suitable alternatives. As we go deeper into these subjects, stay tuned for my upcoming posts.
+Our exploration into building an Industrial IoT solution using open-source technologies has only scratched the surface. Moving forward, we will continue to examine our existing architecture and identify potential bottleneck areas. Our aim is to optimize the system by replacing certain components with more suitable alternatives. As we go deeper into these subjects, stay tuned for my upcoming posts!
