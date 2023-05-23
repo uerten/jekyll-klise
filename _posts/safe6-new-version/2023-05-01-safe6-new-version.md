@@ -2,7 +2,7 @@
 title: "New version released - SAFe 6.0"
 date: 2023-05-01 15:22:37 +03:00
 tags: [Agile, Business Agility]
-description: Blog post about new version of SAFe methodology
+description: "Unveiling SAFe 6.0: Explore the latest enhancements that enhance adaptability and efficiency in our new blog post"
 ---
 
 Recently, a new version of SAFe was launched. Version 6.0 adds a number of significant improvements that increase its adaptability and efficiency.
