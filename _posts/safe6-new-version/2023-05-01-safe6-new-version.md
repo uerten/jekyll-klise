@@ -5,7 +5,7 @@ tags: [Agile, Business Agility]
 description: Blog post about new version of SAFe methodology
 ---
 
-Recently, a new version of SAFe was launched. Version 6.0 adds a number of significant improvements that increase its adaptability and efficiency
+Recently, a new version of SAFe was launched. Version 6.0 adds a number of significant improvements that increase its adaptability and efficiency.
 
 Here are the six primary themes of SAFe 6.0 change:
 
@@ -17,7 +17,7 @@ To be included in all SAFe configurations, the Continuous Learning Culture compe
 
 **Empowering Teams and Clarifying Responsibilities**
 
-SAFe 6.0 is focused on improving the performance of agile teams by providing more clarity and guidance on the responsibilities of each SAFe role. The role articles have been updated with better descriptions of responsibilities to help people improve their job performance and support the organization's goals
+SAFe 6.0 is focused on improving the performance of agile teams by providing more clarity and guidance on the responsibilities of each SAFe role. The role articles have been updated with better descriptions of responsibilities to help people improve their job performance and support the organization's goals.
 
 The Scrum Master/Team Coach now has broader responsibilities for optimizing flow, building high-performing teams, and supporting organizational agility. The Agile Release Train is responsible for delivering effective solutions to customers by developing solutions iteratively, engaging with customers, and adjusting their course of action. A 'responsibility wheel' has been created to clarify the ART's duties at-a-glance. Finally, the collaborative partnerships needed to enable quick and efficient product development flow have been updated in four role articles with content authority. These roles are integral to successful value delivery, but no one has all the domain knowledge or capacity to do it alone.
 
