@@ -10,7 +10,6 @@ Organizations are constantly looking for efficient and effective ways to manage 
 I already covered Data Mesh in my previous post. In this post, I’ll briefly explain Data Fabric and then we’ll investigate the differences between these two terms
 
 **What is Data Fabric**
-
 Data Fabric is an architectural framework that provides a unified and integrated approach to managing data across various sources and formats within an organization. It acts as a virtual layer that enables data integration, access, and analysis.
 
 Key features of Data Fabric include: 
@@ -20,9 +19,7 @@ Key features of Data Fabric include:
 - **Data Governance:** ensures data quality, security, and compliance throughout the data fabric ecosystem
 
 **Data Fabric vs Data Mesh**
-
 While Data Fabric and Data Mesh share some similarities, they have distinct characteristics and goals. Let's explore the differences between the two:
-
 1. **Conceptual Focus:** Data Fabric is primarily focused on unified architecture to create standardized view of data across various sources. It provides a consistent data layer enabling easy access and data sharing. On the other hand, Data Mesh is not only focused on the technical architecture but also the principles of domain-oriented decentralized data ownership and data as a product. It emphasizes breaking down data silos and distributing data ownership to individual domain teams.
 2. **Data Organization:** Data Fabric typically involves a centralized approach to data organization. It often relies on a central data platform or data lake, where data is collected, cleansed, transformed, and made available to various applications and users. It focuses on harmonizing data models and formats to ensure consistency across the organization. In contrast, Data Mesh promotes a decentralized approach. It advocates for domain teams to take ownership of their data and define their own schemas, data models, and governance rules. Data is distributed across multiple domains or teams, each responsible for managing their specific data domain.
 3. **Governance and Ownership:** Data Fabric puts a strong emphasis on centralized data governance. It typically involves a dedicated data governance team that establishes and enforces data policies, standards, and security measures across the organization. Data ownership and stewardship are often centralized as well. In Data Mesh, the ownership and governance of data are decentralized. Each domain team is responsible for defining and enforcing data governance within their specific domain. They have the autonomy to make decisions about their data, including schemas, access controls, and quality standards.
@@ -32,9 +29,6 @@ While Data Fabric and Data Mesh share some similarities, they have distinct char
 So Data Fabric is another method to consider when you implement data management in your organization. By understanding the unique characteristics and implications of each approach, you can make informed decisions and embrace the one that best supports their specific data management needs and future growth.
 
 Please check below links to dive deeper;
-
-https://www.gartner.com/smarterwithgartner/data-fabric-architecture-is-key-to-modernizing-data-management-and-integration
-
-https://www.ibm.com/topics/data-fabric
-
-https://www.talend.com/resources/what-is-data-fabric/
+[Gartner - Data Fabric Architecture is Key to Modernizing Data Management and Integration](https://www.gartner.com/smarterwithgartner/data-fabric-architecture-is-key-to-modernizing-data-management-and-integration)
+[IBM - Data Fabric](https://www.ibm.com/topics/data-fabric)
+[Talend - What is Data Fabric](https://www.talend.com/resources/what-is-data-fabric/)
