@@ -28,7 +28,7 @@ While Data Fabric and Data Mesh share some similarities, they have distinct char
 
 So Data Fabric is another method to consider when you implement data management in your organization. By understanding the unique characteristics and implications of each approach, you can make informed decisions and embrace the one that best supports their specific data management needs and future growth.
 
-Please check below links to dive deeper;
+Please check below links to dive deeper;  
 [Gartner - Data Fabric Architecture is Key to Modernizing Data Management and Integration](https://www.gartner.com/smarterwithgartner/data-fabric-architecture-is-key-to-modernizing-data-management-and-integration)  
 [IBM - Data Fabric](https://www.ibm.com/topics/data-fabric)  
 [Talend - What is Data Fabric](https://www.talend.com/resources/what-is-data-fabric/)  
