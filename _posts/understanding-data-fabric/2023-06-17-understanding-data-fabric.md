@@ -9,7 +9,7 @@ Organizations are constantly looking for efficient and effective ways to manage 
 
 I already covered Data Mesh in my previous post. In this post, I’ll briefly explain Data Fabric and then we’ll investigate the differences between these two terms
 
-**What is Data Fabric**
+**What is Data Fabric**  
 Data Fabric is an architectural framework that provides a unified and integrated approach to managing data across various sources and formats within an organization. It acts as a virtual layer that enables data integration, access, and analysis.
 
 Key features of Data Fabric include: 
