@@ -7,7 +7,7 @@ image: "/where-should-digital-projects-originate/factory_of_future.jpg"
 ---
 
 <figure>
-<img src="/where-should-digital-projects-originate/factory_of_future.jpg" alt="Factory of the Future expression">
+<img src="/where-should-digital-manufacturing-projects-originate/factory_of_future.jpg" alt="Factory of the Future expression">
 <figcaption>Generated with Bing Image Creator</figcaption>
 </figure>
 
