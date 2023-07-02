@@ -2,7 +2,7 @@
 title: "Where Should Digital Manufacturing Projects Originate?"
 date: 2023-07-02 20:11:03 +03:00
 tags: [Industry 4.0, Lean Management, Digital Manufacturing]
-description: "Discover the ideal origins of digital manufacturing projects and optimize your operations for efficiency and value creation. #DigitalManufacturing"
+description: "Discover the ideal origins of digital manufacturing projects and optimize your operations for efficiency and value creation. #DigitalManufacturing, #Industry40"
 image: "/where-should-digital-projects-originate/factory_of_future.jpg"
 ---
 
