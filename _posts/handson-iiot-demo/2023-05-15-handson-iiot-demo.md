@@ -342,13 +342,13 @@ Grafana is a popular open-source tool for creating dashboards and visualizations
 1. Navigate to http://"raspberry_pi_ip_address":3000 in your web browser to access the Grafana interface.
 2. Log in to Grafana using the username and password you configured in docker-compose.yml file
 3. Click on “Menu” icon and then under “Connetions”, click “Connect data”. Search for “PostgreSQL” and click on icon. Finally click “Create a PostgreSQL data source” button.
-4. Configure the PostgreSQL data source by entering the following information:  
-  - Name: iotdemo
-  - Host: http://"raspberry_pi_ip_address":5432
-  - Database: iotdemo
-  - User: postgres
-  - Password: your_password_here
-  - TLS/SSL Mode: disable
+4. Configure the PostgreSQL data source by entering the following information:
+	- Name: iotdemo
+	- Host: http://"raspberry_pi_ip_address":5432
+	- Database: iotdemo
+	- User: postgres
+	- Password: your_password_here
+	- TLS/SSL Mode: disable
 5. Click on the "Save & Test" button to test the connection to the TimescaleDB database.
 6. Create a new dashboard by clicking on the "+" icon in the top-right corner of the screen and selecting "New dashboard". Click again “+ Add visualization” button.
 7. Configure the graph by selecting the "iotdemo" data source, selecting the "iotraw" table, and configuring the query to retrieve the desired data. Query section has “builder” and “code” option. Choose “code” and paste below query to the editor.  
