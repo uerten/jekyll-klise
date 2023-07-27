@@ -27,7 +27,7 @@ If we understand the reasons to fall in purgatory clearly, we’ll have a chance
 - **Start with the end in mind.** Manufacturers need to define their digital vision and strategy based on their business objectives and value drivers. They need to identify the most impactful use cases that can deliver quick wins and long-term benefits. They also need to develop a roadmap for scaling up successful pilots and integrating them into their core operations.
 - **Define the scope of your pilot project carefully:** What are the specific goals of the pilot project? Who are the stakeholders involved? What is the timeline for the project?
 - **Develop capabilities and skills.** Manufacturers need to invest in building or acquiring the right talent and expertise to design, implement, and operate digital solutions. They also need to train and empower their existing workforce with digital skills and tools. They also need to create an attractive value proposition for new talent with digital skills.
-- **Get buy-in from all stakeholders:** Create open and clear communication channels with all relevant stakeholders to give the message about project's purpose, objectives, and potential benefits, involve them as early as possible to increase the overall embracement
+- **Get buy-in from all stakeholders:** Create open and clear communication channels with all relevant stakeholders to give the message about project's purpose, objectives, and potential benefits, involve them as early as possible to increase the overall embracement.
 
 I believe manufacturers can escape pilot purgatory and capture the true value of Industry 4.0 by following these success factors.
   
