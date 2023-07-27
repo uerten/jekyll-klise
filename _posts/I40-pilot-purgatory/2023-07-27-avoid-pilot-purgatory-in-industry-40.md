@@ -2,7 +2,7 @@
 title: "Avoid Pilot Purgatory in Industry 4.0"
 date: 2023-06-17 11:29:47 +03:00
 tags: [Industry 4.0, Digital Manufacturing]
-description: "sss"
+description: "Industry 4.0: Revolution with AI, IoT & cloud tech. Manufacturers face 'pilot purgatory' struggle in scaling digital initiatives."
 image: "/I40-pilot-purgatory/I40_pilot_purgatory.png"
 ---
 
