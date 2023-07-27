@@ -6,7 +6,8 @@
   />
   <h2 class="author-name">{{ site.author.name }}</h2>
   <p class="author-bio">{{ site.author.bio }}</p>
-  
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   </br>
   <div class="social_media">
     <a href="mailto:erten.ufuk@gmail.com" target="_blank" rel="noopener me" title="Email" style="margin-right: 20px; text-decoration: none;">
@@ -25,9 +26,9 @@
       </svg>
     </a>
     <!-- Calendly link widget begin -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/ufukerten'});return false;"><img src="/assets/favicons/calendly_icon.png"></img></a>
+    <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/ufukerten'});return false;">
+      <img src="/assets/favicons/calendly_icon.png"></img>
+    </a>
     <!-- Calendly link widget end -->
   </div>
 </div>
