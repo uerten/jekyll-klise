@@ -29,6 +29,7 @@ According to [a report](https://www.researchandmarkets.com/reports/5735108/iot-i
     Detailed articles for you to continue reading:  
     [Addressing cybersecurity risk in Industrial IoT and OT](https://www.microsoft.com/en-us/security/blog/2020/10/21/addressing-cybersecurity-risk-in-industrial-iot-and-ot/)  
     [Cybersecurity in the Internet of Things in Industrial Management](https://www.mdpi.com/2076-3417/12/3/1598)
+  
 **Latest News from Other Websites**  
 - [IoT Analytics: Top 10 industrial technology trends for 2023](https://iot-analytics.com/top-industrial-technology-trends/)
 - [Automation Alley: Five Industrial Internet of Things (IIoT) Trends for 2023](https://www.automationalley.com/articles/five-industrial-internet-of-things-iiot-trends-for-2023)
