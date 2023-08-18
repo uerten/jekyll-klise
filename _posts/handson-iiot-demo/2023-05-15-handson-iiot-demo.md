@@ -311,7 +311,7 @@ TimescaleDB is a time-series database that is optimized for storing and querying
 	```
 2. Create a new database by running the following command:  
 	```sql
-	CREATE DATABASE iotraw;
+	CREATE DATABASE iotdemo;
 	```
 3. Connect to the new database by running the following command:  
 	```sql
