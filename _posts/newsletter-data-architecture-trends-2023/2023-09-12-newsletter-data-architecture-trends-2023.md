@@ -1,13 +1,13 @@
 ---
-title: "Data Architecture Trends in 2023"
+title: "Newsletter: Data Architecture Trends in 2023"
 date: 2023-09-12 20:52:11 +03:00
 tags: [Data Architecture]
 description: "Most important and emerging data architecture trends that will shape the data landscape in 2023"
-image: "/data-architecture-trends-2023/header.jpg"
+image: "/newsletter-data-architecture-trends-2023/header.jpg"
 ---
 
 <figure>
-<img src="/data-architecture-trends-2023/header.jpg" alt="Data Architecture Trends">
+<img src="/newsletter-data-architecture-trends-2023/header.jpg" alt="Data Architecture Trends">
 </figure>
 
 As a data enthusiast, you might be interested in learning about the latest trends and innovations in Data Architecture that are shaping the future of data-driven businesses. In this newsletter, I will share with you some of the most relevant and exciting developments in this field.
