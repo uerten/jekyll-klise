@@ -8,6 +8,7 @@ image: "/data-overload/cover.webp"
 
 <figure>
 <img src="/data-overload/cover.webp" alt="Oil Rig Flare">
+<figcaption> Gas Flaring, Emiliano Lasalvia/AFP via Getty Images</figcaption>
 </figure>
 
 Data is the new oil. This phrase has been used to describe the immense potential of data as a resource for businesses and organizations. Just as oil fueled the industrial revolution, data powers our modern economy. However, like any valuable resource, data must be managed and utilized effectively to realize its true potential. The paradox lies in the fact that while data is invaluable, too much unused data can become a liability rather than an asset.
